@@ -3,6 +3,7 @@ from .models import Make
 from django.views import View # <- View class to handle requests
 from django.http import HttpResponse # <- a class to handle sending a type of response
 from django.views.generic.base import TemplateView
+from django.views.generic.edit import CreateView
 
 # Create your views here.
 
@@ -19,6 +20,11 @@ class About(TemplateView):
 #         self.name = name
 #         self.image = image
 #         self.country = country
+class MakeCreate(CreateView):
+    model = Make
+    fields = ['name', 'image', 'country']
+    template_name = "make_create.html"
+    success_url = '/makes/'
 
 class MakeList(TemplateView):
     template_name = "make_list.html"
