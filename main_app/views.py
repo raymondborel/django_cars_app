@@ -25,7 +25,11 @@ class MakeList(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["makes"] = Make.objects.all()
+        name = self.request.GET.get('name')
+        if name != None:
+            context["makes"] = Make.objects.filter(name__icontains=name)
+        else:
+            context["makes"] = Make.objects.all()
         return context
 
 
