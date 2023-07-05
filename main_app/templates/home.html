@@ -7,7 +7,7 @@
     <div class="collection mb-5">
         <h3 class="title is-3 has-text-success">{{collection.title}}</h3>
         <hr />
-        {% for carmodel in collection.carmodel.all %}
+        {% for carmodel in collection.carmodels.all %}
             <div class="carmodel">
                 <span>{{forloop.counter}}</span>
                 <span><b>{{carmodel.name}}</b></span>
