@@ -10,5 +10,5 @@ urlpatterns = [
     path('makes/<int:pk>/update', views.MakeUpdate.as_view(), name="make_update"),
     path('makes/<int:pk>/delete', views.MakeDelete.as_view(), name="make_delete"),
     path('makes/<int:pk>/carmodels/new/', views.CarModelCreate.as_view(), name="carmodel_create"),
-        path('collections/<int:pk>/carmodels/<int:carmodel_pk>/', views.CollectionCarModelAssoc.as_view(), name="collection_carmodel_assoc"),
+    path('collections/<int:pk>/carmodels/<int:carmodel_pk>/', views.CollectionCarModelAssoc.as_view(), name="collection_carmodel_assoc"),
 ]
