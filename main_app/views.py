@@ -1,5 +1,7 @@
+from django.shortcuts import redirect
+from django.views import View
 from django.shortcuts import render
-from .models import Make
+from .models import Make, CarModel
 from django.views import View # <- View class to handle requests
 from django.http import HttpResponse # <- a class to handle sending a type of response
 from django.views.generic.base import TemplateView
@@ -52,3 +54,13 @@ class MakeDelete(DeleteView):
     model = Make
     template_name = "make_delete_confirmation.html"
     success_url = "/makes/"
+
+class CarModelCreate(View):
+
+    def post(self, request, pk):
+        name = request.POST.get("name")
+        price = request.POST.get("price")
+        make = Make.objects.get(pk=pk)
+        image = request.POST.get("image")
+        CarModel.objects.create(name=name, price=price, make=make, image=image)
+        return redirect('make_detail', pk=pk)

@@ -12,7 +12,42 @@
     <div class="detail__songs mb-5">     
     <!-- ^CLASS NAME IS STILL SONGS FOR CSS -->
     <h3 class="title is-3">Car Models</h3>
-    
+    <form class="mb-5" action="{% url 'carmodel_create' make.pk %}" method="post">
+        {% csrf_token %}
+        <div class="field has-addons">
+            <div class="control">
+                <input
+                    class="input"
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    required
+                />
+            </div>
+            <div class="control">
+                <input
+                    class="input"
+                    type="number"
+                    name="price"
+                    placeholder="Price"
+                    min="1"
+                    required
+                />
+            </div>
+            <div class="control">
+                <input
+                    class="input"
+                    type="text"
+                    name="image"
+                    placeholder="Image URL"
+                    required
+                />
+            </div>
+            <div class="control">
+                <input class="button is-primary" type="submit" value="Add Model" />
+            </div>
+        </div>
+    </form>
     {% for carmodel in make.carmodels.all %}
     <div class="song">
         <span>{{forloop.counter}}</span>
