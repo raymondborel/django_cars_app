@@ -1,7 +1,7 @@
 from django.shortcuts import redirect
 from django.views import View
 from django.shortcuts import render
-from .models import Make, CarModel
+from .models import Make, CarModel, Collection
 from django.views import View # <- View class to handle requests
 from django.http import HttpResponse # <- a class to handle sending a type of response
 from django.views.generic.base import TemplateView
@@ -14,6 +14,11 @@ from django.urls import reverse
 # Here we will be creating a class called Home and extending it from the View class
 class Home(TemplateView):
     template_name = "home.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["collections"] = Collection.objects.all()
+        return context
 
 class About(TemplateView):
     template_name = "about.html"
@@ -64,3 +69,18 @@ class CarModelCreate(View):
         image = request.POST.get("image")
         CarModel.objects.create(name=name, price=price, make=make, image=image)
         return redirect('make_detail', pk=pk)
+
+class CollectionCarmodelAssoc(View):
+
+    def get(self, request, pk, carmodel_pk):
+        # get the query param from the url
+        assoc = request.GET.get("assoc")
+        if assoc == "remove":
+            # get the playlist by the id and
+            # remove from the join table the given song_id
+            Collection.objects.get(pk=pk).carmodels.remove(carmodel_pk)
+        if assoc == "add":
+            # get the playlist by the id and
+            # add to the join table the given song_id
+            Collection.objects.get(pk=pk).carmodels.add(carmodel_pk)
+        return redirect('home')

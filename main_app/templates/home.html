@@ -2,5 +2,25 @@
 
 {% block title %}Home{% endblock %}
 {% block content %}
-<h1>Car Collector Home</h1>
+<div class="home__collections">
+    {% for collection in collections %}
+
+        <div class="collection mb-5">
+            <h3 class="title is-3 has-text-success">{{collection.title}}</h3>
+            <hr />
+
+            {% for carmodel in collection.carmodel.all %}
+
+                <div class="carmodel">
+                    <span>{{forloop.counter}}</span>
+                    <span><b>{{carmodel.title}}</b></span>
+                    <span>{{carmodel.get_length}}</span>
+                </div>
+
+            {% endfor %}
+        </div>
+    {% empty %} 
+        <div class="collection mb-5">"There are no carmodels in this collection"</div>
+    {% endfor %}
+</div>
 {% endblock %}

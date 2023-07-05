@@ -1,6 +1,6 @@
 body {
     background-color: #121212;
-    color: #ffffff;
+    color: #fff;
     min-height: 100vh;
   }
   
@@ -13,10 +13,11 @@ body {
   .container {
     padding: 40px;
     padding-right: 0;
+    color: #fff
   }
   
   .title {
-    color: #ffffff;
+    color: #fff
   }
   
   .gallery {
@@ -37,6 +38,8 @@ body {
   
   p {
     font-size: 12px;
+    color: #fff
+    
   }
   
   .detail__img {
@@ -76,12 +79,14 @@ body {
   
   .detail__container {
     margin-top: 500px;
+    color: #fff
   }
 
   .detail__songs {
     width: 100%;
     display: flex;
     flex-direction: column;
+    color: #fff
 }
 
 .song {
