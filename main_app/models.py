@@ -23,4 +23,4 @@ class CarModel(models.Model):
     make = models.ForeignKey(Make, on_delete=models.CASCADE, related_name="carmodels")
 
     def __str__(self):
-        return self.title
+        return self.name
