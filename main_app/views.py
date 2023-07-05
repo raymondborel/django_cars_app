@@ -3,8 +3,9 @@ from .models import Make
 from django.views import View # <- View class to handle requests
 from django.http import HttpResponse # <- a class to handle sending a type of response
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DeleteView
+from django.urls import reverse
 
 # Create your views here.
 
@@ -44,6 +45,19 @@ class MakeDetail(DeleteView):
     template_name = "make_detail.html"
 
 
+class MakeUpdate(UpdateView):
+    model = Make
+    fields = ['name', 'image', 'country']
+    template_name = "make_update.html"
+    success_url = "/makes/"
+
+    def get_success_url(self):
+        return reverse('make_detail', kwargs={'pk': self.object.pk})
+
+class MakeDelete(DeleteView):
+    model = Make
+    template_name = "make_delete_confirmation.html"
+    success_url = "/makes/"
 # makes = [
 #   Make("Gorillaz", "https://i.scdn.co/image/ab67616d00001e0295cf976d9ab7320469a00a29",
 #           "Gorillaz are once again disrupting the paradigm and breaking convention in their round the back door fashion with Song Machine, the newest concept from one of the most inventive bands around."),
