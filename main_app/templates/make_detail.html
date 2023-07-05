@@ -7,6 +7,26 @@
     <h1 class="title">{{make.name}}</h1>
 </div>
 <div class="detail__container">
+    <!-- inside container -->
+    <div class="detail__songs mb-5">     
+    <!-- ^CLASS NAME IS STILL SONGS FOR CSS -->
+    <h3 class="title is-3">Car Models</h3>
+    
+    {% for carmodel in make.carmodels.all %}
+    <div class="song">
+        <span>{{forloop.counter}}</span>
+        <span><b>{{carmodel.name}}</b></span>
+        <span>{{carmodel.formatted_price}}</span>
+    </div>
+    {% empty %}
+    <article class="message">
+        <div class="message-header">
+            <p>No carmodels Available</p>
+        </div>
+    </article>
+    {% endfor %}
+    </div>
+    <!--  above about section  -->
     <div class="buttons">
         <a href="{% url 'make_update' make.pk %}" class="button is-info"> Updates
             <span class="icon">

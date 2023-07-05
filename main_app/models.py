@@ -24,3 +24,6 @@ class CarModel(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def formatted_price(self):
+        return f"${self.price:,}"
