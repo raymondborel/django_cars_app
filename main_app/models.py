@@ -28,3 +28,11 @@ class CarModel(models.Model):
     
     def formatted_price(self):
         return f"${self.price:,}"
+
+class Collection(models.Model):
+
+    title = models.CharField(max_length=150)
+    songs = models.ManyToManyField(CarModel)
+
+    def __str__(self):
+        return self.title
