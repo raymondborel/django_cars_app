@@ -45,6 +45,11 @@ class MakeDetail(DeleteView):
     model = Make
     template_name = "make_detail.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["collections"] = Collection.objects.all()
+        return context
+
 
 class MakeUpdate(UpdateView):
     model = Make
@@ -70,7 +75,7 @@ class CarModelCreate(View):
         CarModel.objects.create(name=name, price=price, make=make, image=image)
         return redirect('make_detail', pk=pk)
 
-class CollectionCarmodelAssoc(View):
+class CollectionCarModelAssoc(View):
 
     def get(self, request, pk, carmodel_pk):
         # get the query param from the url
