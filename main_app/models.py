@@ -30,9 +30,8 @@ class CarModel(models.Model):
         return f"${self.price:,}"
 
 class Collection(models.Model):
-
     title = models.CharField(max_length=150)
-    songs = models.ManyToManyField(CarModel)
+    carmodels = models.ManyToManyField(CarModel)
 
     def __str__(self):
         return self.title
