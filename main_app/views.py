@@ -4,6 +4,7 @@ from django.views import View # <- View class to handle requests
 from django.http import HttpResponse # <- a class to handle sending a type of response
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
+from django.views.generic import DeleteView
 
 # Create your views here.
 
@@ -38,6 +39,9 @@ class MakeList(TemplateView):
             context["makes"] = Make.objects.all()
         return context
 
+class MakeDetail(DeleteView):
+    model = Make
+    template_name = "make_detail.html"
 
 
 # makes = [

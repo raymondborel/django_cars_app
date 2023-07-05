@@ -10,19 +10,18 @@
     <form class="mb-5" method="get">
         <div class="field has-addons">
           <div class="control">
-            <!--  Our input will search by name of artist  -->
+            <!--  Our input will search by name of make  -->
             <input class="input" type="text" name="name" placeholder="name" />
           </div>
           <div class="control">
             <input class="button is-success" type="submit" value="Search" />
           </div>
         </div>
-        <!--  This anchor tag will redirect back to artist list without a query param -->
+        <!--  This anchor tag will redirect back to make list without a query param -->
         <a class="button is-dark" href="{% url 'make_list' %}">Clear Search</a>
       </form>
   {% for make in makes %}
-  {{artist}}
-  <a href="">
+  <a href="{% url 'make_detail' make.pk %}">
     <div class="card">
       <div class="card-image">
         <figure class="image is-square">

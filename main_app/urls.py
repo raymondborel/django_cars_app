@@ -6,4 +6,5 @@ urlpatterns = [
     path('about/', views.About.as_view(), name="about"),
     path('makes/', views.MakeList.as_view(), name="make_list"),
     path('makes/new/', views.MakeCreate.as_view(), name="make_create"),
+    path('makes/<int:pk>/', views.MakeDetail.as_view(), name="make_detail"),
 ]
