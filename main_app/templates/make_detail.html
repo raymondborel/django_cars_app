@@ -6,6 +6,7 @@
 <div class="detail__name">
     <h1 class="title">{{make.name}}</h1>
 </div>
+
 <div class="detail__container">
     <!-- inside container -->
     <div class="detail__songs mb-5">     
@@ -17,6 +18,9 @@
         <span>{{forloop.counter}}</span>
         <span><b>{{carmodel.name}}</b></span>
         <span>{{carmodel.formatted_price}}</span>
+    </div>
+    <div class="card-image">
+        <img src="{{carmodel.image}}">
     </div>
     {% empty %}
     <article class="message">
